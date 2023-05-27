@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<%= render @todo_list %>
+
+<div id="todo_items_wrapper">
+ <%= render @todo_list.todo_items %>
+ <div id="form">
+   <%= render "todo_items/form" %>
+ </div>
+</div>
+
+<div>
+  <%= link_to "Edit this todo list", edit_todo_list_path(@todo_list) %> |
+  <%= link_to "Back to todo lists", todo_lists_path %>
+
+  <%= button_to "Destroy this todo list", @todo_list, method: :delete %>
+</div>
