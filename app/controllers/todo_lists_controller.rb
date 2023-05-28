@@ -6,23 +6,27 @@ class TodoListsController < ApplicationController
     @todo_lists = TodoList.all
   end
 
-  # GET /todo_lists/1 or /todo_lists/1.json
   def show
   end
 
-  # GET /todo_lists/new
   def new
     @todo_list = TodoList.new
   end
 
-  # GET /todo_lists/1/edit
   def edit
+    
+  end
+  
+  def destroy  
+    @todo_list.destroy
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: 'Todo list was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
-  # POST /todo_lists or /todo_lists.json
   def create
     @todo_list = TodoList.new(todo_list_params)
-
     respond_to do |format|
       if @todo_list.save
         format.html { redirect_to todo_list_url(@todo_list), notice: "Todo list was successfully created." }
@@ -34,7 +38,6 @@ class TodoListsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /todo_lists/1 or /todo_lists/1.json
   def update
     respond_to do |format|
       if @todo_list.update(todo_list_params)
@@ -44,16 +47,6 @@ class TodoListsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @todo_list.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /todo_lists/1 or /todo_lists/1.json
-  def destroy
-    @todo_list.destroy
-
-    respond_to do |format|
-      format.html { redirect_to todo_lists_url, notice: "Todo list was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

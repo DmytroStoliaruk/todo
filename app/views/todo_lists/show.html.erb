@@ -1,17 +1,21 @@
 <p id="notice"><%= notice %></p>
-
-<%= render @todo_list %>
-
+<h2 class="todo_list_title"><%= @todo_list.title %></h2>
+<p class="todo_list_sub_title"><%= @todo_list.description %></p>
 <div id="todo_items_wrapper">
- <%= render @todo_list.todo_items %>
- <div id="form">
-   <%= render "todo_items/form" %>
- </div>
+  <%= render @todo_list.todo_items %>
+    <% if flash[:success] %>
+      <div class="alert">
+      <%= flash[:success] %>
+      </div>
+    <% end %>
+  <div id="form">
+    <%= render "todo_items/form" %>
+  </div>
 </div>
-
-<div>
-  <%= link_to "Edit this todo list", edit_todo_list_path(@todo_list) %> |
-  <%= link_to "Back to todo lists", todo_lists_path %>
-
-  <%= button_to "Destroy this todo list", @todo_list, method: :delete %>
+<div class="links">
+  <%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
+<!-- it doesn't work correctly (don't generate DELETE)
+  <%= link_to todo_list_path(@todo_list), method: :delete %> | 
+-->
+  <%= link_to 'Back', todo_lists_path %>
 </div>
