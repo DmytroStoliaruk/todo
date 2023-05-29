@@ -22,10 +22,4 @@ test:
 
 production:
   <<: *default
- adapter: postgresql
-  encoding: unicode
-  host: ec2-34-236-103-63.compute-1.amazonaws.com
-  username: qfxubfwtcsqwug
-  database: dd52s5pijg76p1
-  password: 29688d18bdfa75a51e70da0682695dadc6f0ac3e6b29dbd96a1002dd8c427717
-  port: 5432
+  database: db/development.sqlite3
