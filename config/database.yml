@@ -26,9 +26,9 @@ production:
   # <<: *default:
   adapter: postgresql
   encoding: unicode
-  database: d28ldarh0s9o3j
+  database: dferu4jrc773c
   port: 5432
   pool: 5
-  username: vxwjxhpalhaodn
-  password: 39da8a19f5a110781d8a2641043ca44176970f31247d893a07f7ee64c600fcba
-  host: ec2-34-236-103-63.compute-1.amazonaws.com
+  url: <%= ENV["DATABASE_URL"] %>
+  password: <%= ENV["HEROKU_DB_PASSWORD"] %>
+  host: ec2-52-54-200-216.compute-1.amazonaws.com
